@@ -23,7 +23,7 @@ window.addEventListener("load", async () => {
 
   if (!query.search) return
 
-  await setMessage("第一步:", "輸入你的問題。")
+  await setMessage("第一步：", "輸入你的問題。")
   const cursor = makeCursor()
   await move(cursor, input)
   input.focus()
@@ -31,7 +31,7 @@ window.addEventListener("load", async () => {
   await new Promise(resolve => setTimeout(resolve, 1000))
   input.blur()
 
-  await setMessage("第二步:", "點那個「搜尋」按鈕")
+  await setMessage("第二步：", "點那個「搜尋」按鈕。")
   const button = query.lucky
     ? document.getElementById("lucky")
     : document.getElementById("search")
@@ -39,7 +39,7 @@ window.addEventListener("load", async () => {
   button.focus()
   await new Promise(resolve => setTimeout(resolve, 1000))
 
-  await setMessage("完成!", "拜託，這真的有那麼難嗎?", "alert-success")
+  await setMessage("完成！", "拜託，這真的有那麼難嗎？", "alert-success")
   await new Promise(resolve => setTimeout(resolve, 3000))
 
   window.location.href = `https://www.google.com/search?${
