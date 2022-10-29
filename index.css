@@ -2,6 +2,9 @@
   position: absolute;
   top: 0;
   left: 0;
+  height: 20px;
+  width: 12px;
+  z-index: 100;
 }
 
 #message {

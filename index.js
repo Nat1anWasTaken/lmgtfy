@@ -23,7 +23,7 @@ window.addEventListener("load", async () => {
 
   if (!query.search) return
 
-  await setMessage("Step 1", "Type in your question")
+  await setMessage("第一步:", "輸入你的問題。")
   const cursor = makeCursor()
   await move(cursor, input)
   input.focus()
@@ -31,7 +31,7 @@ window.addEventListener("load", async () => {
   await new Promise(resolve => setTimeout(resolve, 1000))
   input.blur()
 
-  await setMessage("Step 2", "Click on the search button")
+  await setMessage("第二步:", "點那個「搜尋」按鈕")
   const button = query.lucky
     ? document.getElementById("lucky")
     : document.getElementById("search")
@@ -39,7 +39,7 @@ window.addEventListener("load", async () => {
   button.focus()
   await new Promise(resolve => setTimeout(resolve, 1000))
 
-  await setMessage("Come on", "Was it really that hard?", "alert-success")
+  await setMessage("完成!", "拜託，這真的有那麼難嗎?", "alert-success")
   await new Promise(resolve => setTimeout(resolve, 3000))
 
   window.location.href = `https://www.google.com/search?${
@@ -51,7 +51,11 @@ function makeCursor() {
   const dark = JSON.parse(localStorage.getItem("dark") ?? "false")
 
   const cursor = document.createElement("span")
-  cursor.className = `bi-cursor-fill text-${dark ? "light" : "dark"}`
+  cursor.innerHTML = `
+  <svg xmlns="http://www.w3.org/2000/svg" style="enable-background:new 0 0 96.09 122.88" viewBox="0 0 96.09 122.88">
+    <path d="m61.61 122.31-4.15.37-3.55-2.67-14.88-25.65-14.15 15.88-6.37 4.75-4.84.56-4.2-3.01-1.57-5.39L.01 4.41 0 4.18l.37-1.84L1.74.64l.84-.41 1.79-.2 1.64.52.49.3 84.88 58.11 3.88 4.05.5 5.14-2.9 3.91-7.3 3.14-.1.02-20.73 4.29 14.77 25.73.54 4.39-2.59 3.56-.17.1-15.34 8.86-.33.16z" style="stroke:#000;stroke-width:5px;fill:#fff"/>
+  </svg>`
+
   cursor.id = "cursor"
   document.body.appendChild(cursor)
   return cursor
